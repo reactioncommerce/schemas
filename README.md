@@ -1,6 +1,6 @@
 # Reaction Collection Schema API
 
-# Schemas
+## Schemas
 
 Reaction uses [MongoDB](https://docs.mongodb.com/manual/), which is a schemaless database. This allows maximum flexibility, particularly important when quickly reacting to the design challenges that uniquely different customizations require in the course of an ecommerce operation.
 
