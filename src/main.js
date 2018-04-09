@@ -28,6 +28,6 @@ export function registerSchema(name, schema) {
   Schemas[name] = schema;
 }
 
-export { default as Validation } from "./validation";
+export * from "./validation";
 
 export default Schemas;

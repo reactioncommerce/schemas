@@ -1,8 +1,34 @@
+/*
+ * @name luhnValid
+ * @method
+ * @memberOf Helpers
+ * @summary Checks if a number passes Luhn's test
+ * @param {String} cardNumber The card number to check
+ * @returns {Boolean} The result of the test
+ */
+export function luhnValid(cardNumber) {
+  return [...cardNumber].reverse().reduce((sum, c, i) => {
+    let d = parseInt(c, 10);
+    if (i % 2 !== 0) { d *= 2; }
+    if (d > 9) { d -= 9; }
+    return sum + d;
+  }, 0) % 10 === 0;
+}
+
+// Regex to do credit card validations
+export const ValidCardNumber = (x) => /^[0-9]{12,19}$/.test(x) && luhnValid(x.toString());
+
+export const ValidExpireMonth = (x) => /^[0-9]{1,2}$/.test(x);
+
+export const ValidExpireYear = (x) => /^[0-9]{4}$/.test(x);
+
+export const ValidCVV = (x) => /^[0-9]{3,4}$/.test(x);
+
 /**
  * Validation class
  * @summary Helper to streamline getting simple-schema validation in react components
  */
-class Validation {
+export class Validation {
   /**
    * Instantiate with a schema to validate against
    * @param  {SimpleSchema} schema aldeed:simpleschema class
@@ -89,5 +115,3 @@ class Validation {
     return field && field.isValid;
   }
 }
-
-export default Validation;
